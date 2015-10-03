@@ -1,0 +1,5 @@
+user = postfix_user
+password = postfix_password
+hosts = postfix_db_host
+dbname = postfix_db_name
+query = SELECT domain FROM mail_domain WHERE domain = '%d' AND relay = 0
