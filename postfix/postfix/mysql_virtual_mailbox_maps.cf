@@ -2,4 +2,4 @@ user = postfix_user
 password = postfix_password
 hosts = postfix_db_host
 dbname = postfix_db_name
-query = SELECT user FROM mail_login WHERE user = '%u'
+query = SELECT user FROM mail_login WHERE user = '%s'

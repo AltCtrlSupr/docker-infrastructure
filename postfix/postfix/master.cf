@@ -9,8 +9,8 @@
 #               (yes)   (yes)   (yes)   (never) (100)
 # ==========================================================================
 # postscreen configuration
-smtpd     pass  -       -       n       -       -       smtpd
-smtp      inet  n       -       n       -       1       postscreen
+#smtpd     pass  -       -       n       -       -       smtpd
+smtp      inet  n       -       n       -       1       smtpd
 tlsproxy  unix  -       -       n       -       0       tlsproxy
 dnsblog   unix  -       -       n       -       0       dnsblog
 submission inet n       -       -       -       -       smtpd

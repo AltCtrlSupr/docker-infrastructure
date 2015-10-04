@@ -1,0 +1,6 @@
+START=yes
+DESC="SASL Auth. Daemon for Postfix"
+NAME="saslauthd"      # max. 15 char.
+# Option -m sets working dir for saslauthd (contains socket)
+OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd"        # postfix/smtp in chroot()
+

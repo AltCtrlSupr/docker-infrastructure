@@ -2,4 +2,4 @@ user = postfix_user
 password = postfix_password
 hosts = postfix_db_host
 dbname = postfix_db_name
-query = SELECT goto FROM mail_alias WHERE address = '%u'
+query = SELECT goto FROM mail_alias WHERE address = '%s'

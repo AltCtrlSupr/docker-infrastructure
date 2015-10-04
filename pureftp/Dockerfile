@@ -2,13 +2,12 @@ FROM debian:jessie
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "deb http://http.debian.net/debian wheezy main contrib non-free\n\
-deb-src http://http.debian.net/debian wheezy main contrib non-free\n\
-deb http://http.debian.net/debian wheezy-updates main contrib non-free\n\
-deb-src http://http.debian.net/debian wheezy-updates main contrib non-free\n\
-deb http://security.debian.org wheezy/updates main contrib non-free\n\
-deb-src http://security.debian.org wheezy/updates main contrib non-free\n\
-" > /etc/apt/sources.list && \
+RUN echo "deb http://http.debian.net/debian jessie main contrib non-free" > /etc/apt/sources.list && \ 
+    echo "deb-src http://http.debian.net/debian jessie main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://http.debian.net/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb-src http://http.debian.net/debian jessie-updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb http://security.debian.org jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
+    echo "deb-src http://security.debian.org jessie/updates main contrib non-free" >> /etc/apt/sources.list && \
     apt-get update && \
     apt-get -y upgrade && \
     apt-get -y --force-yes install dpkg-dev debhelper && \
@@ -29,4 +28,22 @@ deb-src http://security.debian.org wheezy/updates main contrib non-free\n\
 
 EXPOSE 21/tcp
 
-CMD /usr/sbin/pure-ftpd-wrapper
+ENV AllowDotFiles Yes
+ENV ChrootEveryone Yes
+ENV CreateHomeDir Yes
+ENV MinUID 1000
+ENV NoAnonymous Yes
+ENV NoTruncate Yes
+ENV PassivePortRange "19152 65534"
+
+ENV PUREFTPD_USER pureftpd_user
+ENV PUREFTPD_PASSWORD pureftpd_password
+ENV PUREFTPD_DB_HOST pureftpd_db_host
+ENV PUREFTPD_DB_NAME pureftpd_db_name
+ENV PUREFTPD_ENC cleartext
+
+
+
+ADD pure-ftpd /etc/pure-ftpd
+ADD start.sh .
+CMD start.sh
