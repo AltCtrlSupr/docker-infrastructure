@@ -1,11 +1,12 @@
 #!/bin/bash
 
+MYSQL_FILE=/etc/pure-ftpd/db/mysql.conf
 
-sed -i "s/PUREFTPD_USER/$PUREFTPD_USER/g" /etc/pure-ftpd/db/mysql.conf
-sed -i "s/PUREFTPD_PASSWORD/$PUREFTPD_PASSWORD/g" /etc/pure-ftpd/db/mysql.conf
-sed -i "s/PUREFTPD_DB_HOST/$PUREFTPD_DB_HOST/g" /etc/pure-ftpd/db/mysql.conf
-sed -i "s/PUREFTPD_DB_NAME/$PUREFTPD_DB_NAME/g" /etc/pure-ftpd/db/mysql.conf
-sed -i "s/PUREFTPD_ENC/$PUREFTPD_ENC/g" /etc/pure-ftpd/db/mysql.conf
+sed -i "s/PUREFTPD_USER/$PUREFTPD_USER/g" $MYSQL_FILE
+sed -i "s/PUREFTPD_PASSWORD/$PUREFTPD_PASSWORD/g" $MYSQL_FILE
+sed -i "s/PUREFTPD_DB_HOST/$PUREFTPD_DB_HOST/g" $MYSQL_FILE
+sed -i "s/PUREFTPD_DB_NAME/$PUREFTPD_DB_NAME/g" $MYSQL_FILE
+sed -i "s/PUREFTPD_ENC/$PUREFTPD_ENC/g" $MYSQL_FILE
 
 test -n "$AllowDotFiles" && echo $AllowDotFiles > /etc/pure-ftpd/conf/AllowDotFiles
 test -n "$ChrootEveryone" && echo $ChrootEveryone > /etc/pure-ftpd/conf/ChrootEveryone

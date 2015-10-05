@@ -44,6 +44,6 @@ ENV PUREFTPD_ENC cleartext
 
 
 
-ADD pure-ftpd /etc/pure-ftpd
-ADD start.sh .
-CMD start.sh
+ADD pure-ftpd/ /etc/pure-ftpd
+ADD start.sh /root/start.sh
+CMD /root/start.sh
